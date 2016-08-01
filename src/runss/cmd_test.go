@@ -47,9 +47,7 @@ func TestListCommands(t *testing.T) {
 	defer ctrl.Finish()
 
 	cmd := &Cmd{
-		InstanceIds: []string{"i-abcdef"},
-		Command:     "hostname",
-		CommandId:   aws.String("<command id>"),
+		CommandId: aws.String("<command id>"),
 	}
 
 	mockssm := mockaws.NewMockSSMAPI(ctrl)
@@ -68,4 +66,32 @@ func TestListCommands(t *testing.T) {
 	status, _ := cmd.listCommands(mockssm)
 
 	assert.Equal("Success", status)
+}
+
+func TestWaitCommand(t *testing.T) {
+	assert := assert.New(t)
+
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	cmd := &Cmd{
+		CommandId: aws.String("<command id>"),
+	}
+
+	mockssm := mockaws.NewMockSSMAPI(ctrl)
+
+	mockssm.EXPECT().ListCommands(&ssm.ListCommandsInput{
+		CommandId: aws.String("<command id>"),
+	}).Return(
+		&ssm.ListCommandsOutput{
+			Commands: []*ssm.Command{&ssm.Command{
+				Status: aws.String("Success"),
+			}},
+		},
+		nil,
+	)
+
+	err := cmd.waitCommand(mockssm)
+
+	assert.Equal(nil, err)
 }
