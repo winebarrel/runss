@@ -1,29 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"html"
 	"log"
-	"regexp"
+	"os"
 	"runss"
 )
 
 func init() {
 	log.SetFlags(0)
-}
-
-func printOutput(output string) {
-	fmt.Println("  Output: |")
-	output = html.UnescapeString(output)
-	r := regexp.MustCompile(`(?m)^`)
-	output = r.ReplaceAllString(output, "    ")
-	fmt.Println(output)
-}
-
-func printResult(instanceId string, result *runss.Result) {
-	fmt.Printf("- InstanceId: %s\n", instanceId)
-	fmt.Printf("  Status: %s\n", result.Status)
-	printOutput(result.Output)
 }
 
 func main() {
@@ -46,7 +30,5 @@ func main() {
 		panic(err)
 	}
 
-	for instanceId, result := range cmd.Results {
-		printResult(instanceId, result)
-	}
+	cmd.PrintResults(os.Stdout)
 }
