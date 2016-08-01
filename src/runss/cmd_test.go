@@ -39,3 +39,33 @@ func TestSendCommand(t *testing.T) {
 
 	assert.Equal(aws.String("<command id>"), cmd.CommandId)
 }
+
+func TestListCommands(t *testing.T) {
+	assert := assert.New(t)
+
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	cmd := &Cmd{
+		InstanceIds: []string{"i-abcdef"},
+		Command:     "hostname",
+		CommandId:   aws.String("<command id>"),
+	}
+
+	mockssm := mockaws.NewMockSSMAPI(ctrl)
+
+	mockssm.EXPECT().ListCommands(&ssm.ListCommandsInput{
+		CommandId: aws.String("<command id>"),
+	}).Return(
+		&ssm.ListCommandsOutput{
+			Commands: []*ssm.Command{&ssm.Command{
+				Status: aws.String("Success"),
+			}},
+		},
+		nil,
+	)
+
+	status, _ := cmd.listCommands(mockssm)
+
+	assert.Equal("Success", status)
+}
