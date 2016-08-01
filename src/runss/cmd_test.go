@@ -95,3 +95,56 @@ func TestWaitCommand(t *testing.T) {
 
 	assert.Equal(nil, err)
 }
+
+func TestListCommandInvocations(t *testing.T) {
+	assert := assert.New(t)
+
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	cmd := &Cmd{
+		CommandId: aws.String("<command id>"),
+		Results:   map[string]*Result{},
+	}
+
+	mockssm := mockaws.NewMockSSMAPI(ctrl)
+
+	mockssm.EXPECT().ListCommandInvocationsPages(
+		&ssm.ListCommandInvocationsInput{
+			CommandId: aws.String("<command id>"),
+			Details:   aws.Bool(true),
+		},
+		gomock.Any(),
+	).Do(func(_ *ssm.ListCommandInvocationsInput, fn func(*ssm.ListCommandInvocationsOutput, bool) bool) {
+		fn(
+			&ssm.ListCommandInvocationsOutput{
+				CommandInvocations: []*ssm.CommandInvocation{
+					&ssm.CommandInvocation{
+						InstanceId: aws.String("i-abcdef"),
+						CommandPlugins: []*ssm.CommandPlugin{
+							&ssm.CommandPlugin{
+								Output: aws.String("my-host"),
+								Status: aws.String("Success"),
+							},
+						},
+					},
+				},
+			},
+			true,
+		)
+	}).Return(
+		nil,
+	)
+
+	cmd.listCommandInvocations(mockssm)
+
+	assert.Equal(
+		cmd.Results,
+		map[string]*Result{
+			"i-abcdef": &Result{
+				Output: "my-host",
+				Status: "Success",
+			},
+		},
+	)
+}
