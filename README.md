@@ -1,4 +1,4 @@
-# rumcmd
+# runss
 
 Run shell script command using Amazon Simple Systems Management Service.
 
