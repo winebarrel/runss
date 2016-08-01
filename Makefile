@@ -8,6 +8,7 @@ all: runss
 
 go-get:
 	go get github.com/aws/aws-sdk-go
+	go get github.com/golang/mock/gomock
 
 stringer:
 	go get golang.org/x/tools/cmd/stringer
@@ -21,3 +22,8 @@ clean:
 
 package: clean runss
 	gzip -c runss > runss-$(VERSION)-$(GOOS)-$(GOARCH).gz
+
+mock:
+	go get github.com/golang/mock/mockgen
+	mkdir -p src/mockaws
+	mockgen -source $(GOPATH)/src/github.com/aws/aws-sdk-go/service/ssm/ssmiface/interface.go -destination src/mockaws/ssmmock.go -package mockaws
