@@ -2,6 +2,8 @@
 
 Run shell script command using Amazon Simple Systems Management Service.
 
+[![Build Status](https://travis-ci.org/winebarrel/runss.svg?branch=master)](https://travis-ci.org/winebarrel/runss)
+
 ## Usage
 
 ```
