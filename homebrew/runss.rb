@@ -5,7 +5,7 @@ class Runss < Formula
 
   homepage 'https://github.com/winebarrel/runss'
   url "https://github.com/winebarrel/runss/releases/download/v#{VERSION}/runss-v#{VERSION}-darwin-amd64.gz"
-  sha256 'ab3b245ebe31b6163bb7f3813d499c0945074e1eccf298f0f4e9b3560453b95f'
+  sha256 'e0f96d1a518ce353a5116e38798af7d6cbd779442af6127089196e99fb53f5b6'
   version VERSION
   head 'https://github.com/winebarrel/runss.git', :branch => 'master'
 
