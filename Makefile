@@ -2,13 +2,15 @@ VERSION=$(shell git tag | tail -n 1)
 GOOS=$(shell go env GOOS)
 GOARCH=$(shell go env GOARCH)
 RUNTIME_GOPATH=$(GOPATH):$(shell pwd)
-SRC=$(wildcard *.go) $(wildcard src/*/*.go)
+TEST=$(wildcard src/runss/*_test.go)
+SRC=$(filter-out $(TEST), $(wildcard *.go) $(wildcard src/runss/*.go))
 
 all: runss
 
 go-get:
 	go get github.com/aws/aws-sdk-go
 	go get github.com/golang/mock/gomock
+	go get github.com/stretchr/testify
 
 stringer:
 	go get golang.org/x/tools/cmd/stringer
@@ -16,6 +18,9 @@ stringer:
 
 runss: go-get $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
+
+test: $(SRC) $(TEST)
+	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST)
 
 clean:
 	rm -f runss *.gz
