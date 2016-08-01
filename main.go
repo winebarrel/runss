@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html"
 	"log"
 	"regexp"
 	"runss"
@@ -13,6 +14,7 @@ func init() {
 
 func printOutput(output string) {
 	fmt.Println("  Output: |")
+	output = html.UnescapeString(output)
 	r := regexp.MustCompile(`(?m)^`)
 	output = r.ReplaceAllString(output, "    ")
 	fmt.Println(output)
