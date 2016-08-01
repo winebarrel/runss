@@ -5,6 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ssm"
+	"github.com/aws/aws-sdk-go/service/ssm/ssmiface"
 	"time"
 )
 
@@ -36,7 +37,7 @@ const (
 	Failed
 )
 
-func (cmd *Cmd) sendCommand(svc *ssm.SSM) (err error) {
+func (cmd *Cmd) sendCommand(svc ssmiface.SSMAPI) (err error) {
 	instanceIds := []*string{}
 
 	for _, id := range cmd.InstanceIds {
@@ -62,7 +63,7 @@ func (cmd *Cmd) sendCommand(svc *ssm.SSM) (err error) {
 	return
 }
 
-func (cmd *Cmd) listCommands(svc *ssm.SSM) (status string, err error) {
+func (cmd *Cmd) listCommands(svc ssmiface.SSMAPI) (status string, err error) {
 	params := &ssm.ListCommandsInput{
 		CommandId: cmd.CommandId,
 	}
@@ -83,7 +84,7 @@ func (cmd *Cmd) listCommands(svc *ssm.SSM) (status string, err error) {
 	return
 }
 
-func (cmd *Cmd) listCommandInvocations(svc *ssm.SSM) (err error) {
+func (cmd *Cmd) listCommandInvocations(svc ssmiface.SSMAPI) (err error) {
 	params := &ssm.ListCommandInvocationsInput{
 		CommandId: cmd.CommandId,
 		Details:   aws.Bool(true),
@@ -120,7 +121,7 @@ func (cmd *Cmd) listCommandInvocations(svc *ssm.SSM) (err error) {
 	return
 }
 
-func (cmd *Cmd) waitCommand(svc *ssm.SSM) (err error) {
+func (cmd *Cmd) waitCommand(svc ssmiface.SSMAPI) (err error) {
 	status := ""
 
 	for {
