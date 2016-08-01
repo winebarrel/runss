@@ -9,7 +9,11 @@ all: runss
 go-get:
 	go get github.com/aws/aws-sdk-go
 
-runss: go-get main.go $(SRC)
+stringer:
+	go get golang.org/x/tools/cmd/stringer
+	cd src/runss && stringer -type CommandStatus
+
+runss: go-get $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
 
 clean:

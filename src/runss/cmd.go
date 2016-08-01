@@ -24,6 +24,18 @@ type Cmd struct {
 	Results     map[string]*Result
 }
 
+type CommandStatus int
+
+const (
+	Pending CommandStatus = iota
+	InProgress
+	Cancelling
+	Success
+	TimedOut
+	Cancelled
+	Failed
+)
+
 func (cmd *Cmd) sendCommand(svc *ssm.SSM) (err error) {
 	instanceIds := []*string{}
 
@@ -118,14 +130,14 @@ func (cmd *Cmd) waitCommand(svc *ssm.SSM) (err error) {
 			return
 		}
 
-		if status != "Pending" && status != "InProgress" {
+		if status != Pending.String() && status != InProgress.String() {
 			break
 		}
 
 		time.Sleep(1 * time.Second)
 	}
 
-	if status != "Success" && status != "Failed" {
+	if status != Success.String() && status != Failed.String() {
 		err = fmt.Errorf("Ccommand faile: %s", status)
 		return
 	}
