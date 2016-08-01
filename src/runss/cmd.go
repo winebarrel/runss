@@ -112,10 +112,16 @@ func (cmd *Cmd) listCommandInvocations(svc ssmiface.SSMAPI) (err error) {
 	for _, output := range outputs {
 		commandPlugin := output.CommandPlugins[0]
 
-		cmd.Results[*output.InstanceId] = &Result{
-			Output: *commandPlugin.Output,
+		result := &Result{
 			Status: *commandPlugin.Status,
 		}
+
+		if commandPlugin.Output != nil {
+			result.Output = *commandPlugin.Output
+
+		}
+
+		cmd.Results[*output.InstanceId] = result
 	}
 
 	return

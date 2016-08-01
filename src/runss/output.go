@@ -8,11 +8,15 @@ import (
 )
 
 func printOutput(writer io.Writer, output string) {
-	fmt.Fprintln(writer, "  Output: |")
-	output = html.UnescapeString(output)
-	r := regexp.MustCompile(`(?m)^`)
-	output = r.ReplaceAllString(output, "    ")
-	fmt.Fprintln(writer, output)
+	if output == "" {
+		fmt.Fprintln(writer, "  Output: ")
+	} else {
+		fmt.Fprintln(writer, "  Output: |")
+		output = html.UnescapeString(output)
+		r := regexp.MustCompile(`(?m)^`)
+		output = r.ReplaceAllString(output, "    ")
+		fmt.Fprintln(writer, output)
+	}
 }
 
 func printResult(writer io.Writer, instanceId string, result *Result) {
