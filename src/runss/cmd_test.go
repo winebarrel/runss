@@ -1,12 +1,41 @@
 package runss
 
 import (
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/ssm"
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-	//. "runss"
+	"mockaws"
 	"testing"
 )
 
-func TestDummy(t *testing.T) {
+func TestSendCommand(t *testing.T) {
 	assert := assert.New(t)
-	assert.Equal(1, 1)
+
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	cmd := &Cmd{
+		InstanceIds: []string{"i-abcdef"},
+		Command:     "hostname",
+	}
+
+	mockssm := mockaws.NewMockSSMAPI(ctrl)
+
+	mockssm.EXPECT().SendCommand(&ssm.SendCommandInput{
+		DocumentName: aws.String(RunShellScriptDocumentName),
+		InstanceIds:  []*string{aws.String("i-abcdef")},
+		Parameters:   map[string][]*string{"commands": []*string{aws.String("hostname")}},
+	}).Return(
+		&ssm.SendCommandOutput{
+			Command: &ssm.Command{
+				CommandId: aws.String("<command id>"),
+			},
+		},
+		nil,
+	)
+
+	cmd.sendCommand(mockssm)
+
+	assert.Equal(aws.String("<command id>"), cmd.CommandId)
 }

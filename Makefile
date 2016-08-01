@@ -3,7 +3,7 @@ GOOS=$(shell go env GOOS)
 GOARCH=$(shell go env GOARCH)
 RUNTIME_GOPATH=$(GOPATH):$(shell pwd)
 TEST=$(wildcard src/runss/*_test.go)
-SRC=$(filter-out $(TEST), $(wildcard *.go) $(wildcard src/runss/*.go))
+SRC=$(filter-out $(TEST), $(wildcard src/runss/*.go))
 
 all: runss
 
@@ -16,11 +16,11 @@ stringer:
 	go get golang.org/x/tools/cmd/stringer
 	cd src/runss && stringer -type CommandStatus
 
-runss: go-get $(SRC)
+runss: go-get main.go $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
 
 test: $(SRC) $(TEST)
-	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST)
+	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST) $(SRC)
 
 clean:
 	rm -f runss *.gz
