@@ -19,7 +19,7 @@ stringer:
 runss: go-get main.go $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
 
-test: $(SRC) $(TEST)
+test: go-get $(SRC) $(TEST)
 	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST) $(SRC)
 
 clean:
