@@ -5,7 +5,6 @@ import (
 	"log"
 	"regexp"
 	"runss"
-	"strings"
 )
 
 func init() {
@@ -14,7 +13,6 @@ func init() {
 
 func printOutput(output string) {
 	fmt.Println("  Output: |")
-	output = strings.TrimRight(output, "\n")
 	r := regexp.MustCompile(`(?m)^`)
 	output = r.ReplaceAllString(output, "    ")
 	fmt.Println(output)
