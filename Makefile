@@ -16,17 +16,21 @@ stringer:
 	go get golang.org/x/tools/cmd/stringer
 	cd src/runss && stringer -type CommandStatus
 
-runss: go-get test main.go $(SRC)
+runss: go-get main.go $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
 
 test: $(SRC) $(TEST)
 	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST) $(SRC)
 
 clean:
-	rm -f runss *.gz
+	rm -f runss runss.exe *.gz *.zip
 
 package: clean runss
+ifeq ($(GOOS),windows)
+	zip runss-$(VERSION)-$(GOOS)-$(GOARCH).zip runss.exe
+else
 	gzip -c runss > runss-$(VERSION)-$(GOOS)-$(GOARCH).gz
+endif
 
 mock:
 	go get github.com/golang/mock/mockgen
