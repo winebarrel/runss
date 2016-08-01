@@ -16,10 +16,10 @@ stringer:
 	go get golang.org/x/tools/cmd/stringer
 	cd src/runss && stringer -type CommandStatus
 
-runss: go-get main.go $(SRC)
+runss: go-get test main.go $(SRC)
 	GOPATH=$(RUNTIME_GOPATH) go build
 
-test: go-get $(SRC) $(TEST)
+test: $(SRC) $(TEST)
 	GOPATH=$(RUNTIME_GOPATH) go test -v $(TEST) $(SRC)
 
 clean:

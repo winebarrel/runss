@@ -30,6 +30,28 @@ func (_m *MockSSMAPI) EXPECT() *_MockSSMAPIRecorder {
 	return _m.recorder
 }
 
+func (_m *MockSSMAPI) AddTagsToResourceRequest(_param0 *ssm.AddTagsToResourceInput) (*request.Request, *ssm.AddTagsToResourceOutput) {
+	ret := _m.ctrl.Call(_m, "AddTagsToResourceRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.AddTagsToResourceOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) AddTagsToResourceRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "AddTagsToResourceRequest", arg0)
+}
+
+func (_m *MockSSMAPI) AddTagsToResource(_param0 *ssm.AddTagsToResourceInput) (*ssm.AddTagsToResourceOutput, error) {
+	ret := _m.ctrl.Call(_m, "AddTagsToResource", _param0)
+	ret0, _ := ret[0].(*ssm.AddTagsToResourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) AddTagsToResource(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "AddTagsToResource", arg0)
+}
+
 func (_m *MockSSMAPI) CancelCommandRequest(_param0 *ssm.CancelCommandInput) (*request.Request, *ssm.CancelCommandOutput) {
 	ret := _m.ctrl.Call(_m, "CancelCommandRequest", _param0)
 	ret0, _ := ret[0].(*request.Request)
@@ -50,6 +72,28 @@ func (_m *MockSSMAPI) CancelCommand(_param0 *ssm.CancelCommandInput) (*ssm.Cance
 
 func (_mr *_MockSSMAPIRecorder) CancelCommand(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "CancelCommand", arg0)
+}
+
+func (_m *MockSSMAPI) CreateActivationRequest(_param0 *ssm.CreateActivationInput) (*request.Request, *ssm.CreateActivationOutput) {
+	ret := _m.ctrl.Call(_m, "CreateActivationRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.CreateActivationOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) CreateActivationRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "CreateActivationRequest", arg0)
+}
+
+func (_m *MockSSMAPI) CreateActivation(_param0 *ssm.CreateActivationInput) (*ssm.CreateActivationOutput, error) {
+	ret := _m.ctrl.Call(_m, "CreateActivation", _param0)
+	ret0, _ := ret[0].(*ssm.CreateActivationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) CreateActivation(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "CreateActivation", arg0)
 }
 
 func (_m *MockSSMAPI) CreateAssociationRequest(_param0 *ssm.CreateAssociationInput) (*request.Request, *ssm.CreateAssociationOutput) {
@@ -118,6 +162,28 @@ func (_mr *_MockSSMAPIRecorder) CreateDocument(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "CreateDocument", arg0)
 }
 
+func (_m *MockSSMAPI) DeleteActivationRequest(_param0 *ssm.DeleteActivationInput) (*request.Request, *ssm.DeleteActivationOutput) {
+	ret := _m.ctrl.Call(_m, "DeleteActivationRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DeleteActivationOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DeleteActivationRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DeleteActivationRequest", arg0)
+}
+
+func (_m *MockSSMAPI) DeleteActivation(_param0 *ssm.DeleteActivationInput) (*ssm.DeleteActivationOutput, error) {
+	ret := _m.ctrl.Call(_m, "DeleteActivation", _param0)
+	ret0, _ := ret[0].(*ssm.DeleteActivationOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DeleteActivation(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DeleteActivation", arg0)
+}
+
 func (_m *MockSSMAPI) DeleteAssociationRequest(_param0 *ssm.DeleteAssociationInput) (*request.Request, *ssm.DeleteAssociationOutput) {
 	ret := _m.ctrl.Call(_m, "DeleteAssociationRequest", _param0)
 	ret0, _ := ret[0].(*request.Request)
@@ -160,6 +226,60 @@ func (_m *MockSSMAPI) DeleteDocument(_param0 *ssm.DeleteDocumentInput) (*ssm.Del
 
 func (_mr *_MockSSMAPIRecorder) DeleteDocument(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "DeleteDocument", arg0)
+}
+
+func (_m *MockSSMAPI) DeregisterManagedInstanceRequest(_param0 *ssm.DeregisterManagedInstanceInput) (*request.Request, *ssm.DeregisterManagedInstanceOutput) {
+	ret := _m.ctrl.Call(_m, "DeregisterManagedInstanceRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DeregisterManagedInstanceOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DeregisterManagedInstanceRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DeregisterManagedInstanceRequest", arg0)
+}
+
+func (_m *MockSSMAPI) DeregisterManagedInstance(_param0 *ssm.DeregisterManagedInstanceInput) (*ssm.DeregisterManagedInstanceOutput, error) {
+	ret := _m.ctrl.Call(_m, "DeregisterManagedInstance", _param0)
+	ret0, _ := ret[0].(*ssm.DeregisterManagedInstanceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DeregisterManagedInstance(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DeregisterManagedInstance", arg0)
+}
+
+func (_m *MockSSMAPI) DescribeActivationsRequest(_param0 *ssm.DescribeActivationsInput) (*request.Request, *ssm.DescribeActivationsOutput) {
+	ret := _m.ctrl.Call(_m, "DescribeActivationsRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeActivationsOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeActivationsRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeActivationsRequest", arg0)
+}
+
+func (_m *MockSSMAPI) DescribeActivations(_param0 *ssm.DescribeActivationsInput) (*ssm.DescribeActivationsOutput, error) {
+	ret := _m.ctrl.Call(_m, "DescribeActivations", _param0)
+	ret0, _ := ret[0].(*ssm.DescribeActivationsOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeActivations(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeActivations", arg0)
+}
+
+func (_m *MockSSMAPI) DescribeActivationsPages(_param0 *ssm.DescribeActivationsInput, _param1 func(*ssm.DescribeActivationsOutput, bool) bool) error {
+	ret := _m.ctrl.Call(_m, "DescribeActivationsPages", _param0, _param1)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeActivationsPages(arg0, arg1 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeActivationsPages", arg0, arg1)
 }
 
 func (_m *MockSSMAPI) DescribeAssociationRequest(_param0 *ssm.DescribeAssociationInput) (*request.Request, *ssm.DescribeAssociationOutput) {
@@ -206,6 +326,28 @@ func (_mr *_MockSSMAPIRecorder) DescribeDocument(arg0 interface{}) *gomock.Call 
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeDocument", arg0)
 }
 
+func (_m *MockSSMAPI) DescribeDocumentPermissionRequest(_param0 *ssm.DescribeDocumentPermissionInput) (*request.Request, *ssm.DescribeDocumentPermissionOutput) {
+	ret := _m.ctrl.Call(_m, "DescribeDocumentPermissionRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.DescribeDocumentPermissionOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeDocumentPermissionRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeDocumentPermissionRequest", arg0)
+}
+
+func (_m *MockSSMAPI) DescribeDocumentPermission(_param0 *ssm.DescribeDocumentPermissionInput) (*ssm.DescribeDocumentPermissionOutput, error) {
+	ret := _m.ctrl.Call(_m, "DescribeDocumentPermission", _param0)
+	ret0, _ := ret[0].(*ssm.DescribeDocumentPermissionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeDocumentPermission(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeDocumentPermission", arg0)
+}
+
 func (_m *MockSSMAPI) DescribeInstanceInformationRequest(_param0 *ssm.DescribeInstanceInformationInput) (*request.Request, *ssm.DescribeInstanceInformationOutput) {
 	ret := _m.ctrl.Call(_m, "DescribeInstanceInformationRequest", _param0)
 	ret0, _ := ret[0].(*request.Request)
@@ -226,6 +368,16 @@ func (_m *MockSSMAPI) DescribeInstanceInformation(_param0 *ssm.DescribeInstanceI
 
 func (_mr *_MockSSMAPIRecorder) DescribeInstanceInformation(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeInstanceInformation", arg0)
+}
+
+func (_m *MockSSMAPI) DescribeInstanceInformationPages(_param0 *ssm.DescribeInstanceInformationInput, _param1 func(*ssm.DescribeInstanceInformationOutput, bool) bool) error {
+	ret := _m.ctrl.Call(_m, "DescribeInstanceInformationPages", _param0, _param1)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+func (_mr *_MockSSMAPIRecorder) DescribeInstanceInformationPages(arg0, arg1 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "DescribeInstanceInformationPages", arg0, arg1)
 }
 
 func (_m *MockSSMAPI) GetDocumentRequest(_param0 *ssm.GetDocumentInput) (*request.Request, *ssm.GetDocumentOutput) {
@@ -378,6 +530,72 @@ func (_mr *_MockSSMAPIRecorder) ListDocumentsPages(arg0, arg1 interface{}) *gomo
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "ListDocumentsPages", arg0, arg1)
 }
 
+func (_m *MockSSMAPI) ListTagsForResourceRequest(_param0 *ssm.ListTagsForResourceInput) (*request.Request, *ssm.ListTagsForResourceOutput) {
+	ret := _m.ctrl.Call(_m, "ListTagsForResourceRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.ListTagsForResourceOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) ListTagsForResourceRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "ListTagsForResourceRequest", arg0)
+}
+
+func (_m *MockSSMAPI) ListTagsForResource(_param0 *ssm.ListTagsForResourceInput) (*ssm.ListTagsForResourceOutput, error) {
+	ret := _m.ctrl.Call(_m, "ListTagsForResource", _param0)
+	ret0, _ := ret[0].(*ssm.ListTagsForResourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) ListTagsForResource(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "ListTagsForResource", arg0)
+}
+
+func (_m *MockSSMAPI) ModifyDocumentPermissionRequest(_param0 *ssm.ModifyDocumentPermissionInput) (*request.Request, *ssm.ModifyDocumentPermissionOutput) {
+	ret := _m.ctrl.Call(_m, "ModifyDocumentPermissionRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.ModifyDocumentPermissionOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) ModifyDocumentPermissionRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "ModifyDocumentPermissionRequest", arg0)
+}
+
+func (_m *MockSSMAPI) ModifyDocumentPermission(_param0 *ssm.ModifyDocumentPermissionInput) (*ssm.ModifyDocumentPermissionOutput, error) {
+	ret := _m.ctrl.Call(_m, "ModifyDocumentPermission", _param0)
+	ret0, _ := ret[0].(*ssm.ModifyDocumentPermissionOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) ModifyDocumentPermission(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "ModifyDocumentPermission", arg0)
+}
+
+func (_m *MockSSMAPI) RemoveTagsFromResourceRequest(_param0 *ssm.RemoveTagsFromResourceInput) (*request.Request, *ssm.RemoveTagsFromResourceOutput) {
+	ret := _m.ctrl.Call(_m, "RemoveTagsFromResourceRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.RemoveTagsFromResourceOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) RemoveTagsFromResourceRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "RemoveTagsFromResourceRequest", arg0)
+}
+
+func (_m *MockSSMAPI) RemoveTagsFromResource(_param0 *ssm.RemoveTagsFromResourceInput) (*ssm.RemoveTagsFromResourceOutput, error) {
+	ret := _m.ctrl.Call(_m, "RemoveTagsFromResource", _param0)
+	ret0, _ := ret[0].(*ssm.RemoveTagsFromResourceOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) RemoveTagsFromResource(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "RemoveTagsFromResource", arg0)
+}
+
 func (_m *MockSSMAPI) SendCommandRequest(_param0 *ssm.SendCommandInput) (*request.Request, *ssm.SendCommandOutput) {
 	ret := _m.ctrl.Call(_m, "SendCommandRequest", _param0)
 	ret0, _ := ret[0].(*request.Request)
@@ -420,4 +638,26 @@ func (_m *MockSSMAPI) UpdateAssociationStatus(_param0 *ssm.UpdateAssociationStat
 
 func (_mr *_MockSSMAPIRecorder) UpdateAssociationStatus(arg0 interface{}) *gomock.Call {
 	return _mr.mock.ctrl.RecordCall(_mr.mock, "UpdateAssociationStatus", arg0)
+}
+
+func (_m *MockSSMAPI) UpdateManagedInstanceRoleRequest(_param0 *ssm.UpdateManagedInstanceRoleInput) (*request.Request, *ssm.UpdateManagedInstanceRoleOutput) {
+	ret := _m.ctrl.Call(_m, "UpdateManagedInstanceRoleRequest", _param0)
+	ret0, _ := ret[0].(*request.Request)
+	ret1, _ := ret[1].(*ssm.UpdateManagedInstanceRoleOutput)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) UpdateManagedInstanceRoleRequest(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "UpdateManagedInstanceRoleRequest", arg0)
+}
+
+func (_m *MockSSMAPI) UpdateManagedInstanceRole(_param0 *ssm.UpdateManagedInstanceRoleInput) (*ssm.UpdateManagedInstanceRoleOutput, error) {
+	ret := _m.ctrl.Call(_m, "UpdateManagedInstanceRole", _param0)
+	ret0, _ := ret[0].(*ssm.UpdateManagedInstanceRoleOutput)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+func (_mr *_MockSSMAPIRecorder) UpdateManagedInstanceRole(arg0 interface{}) *gomock.Call {
+	return _mr.mock.ctrl.RecordCall(_mr.mock, "UpdateManagedInstanceRole", arg0)
 }
