@@ -2,7 +2,7 @@
 
 Run shell script command using Amazon Simple Systems Management Service.
 
-# Usage
+## Usage
 
 ```
 Usage of runss:
@@ -22,4 +22,10 @@ $ runss -command hostname -instance-ids i-xxx...,i-yyy...
   Status: Success
   Output: |
     ip-10-10-10-11
+```
+
+## Installation
+
+```
+brew install https://raw.githubusercontent.com/winebarrel/runss/master/homebrew/runss.rb
 ```
