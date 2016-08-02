@@ -19,13 +19,25 @@ func main() {
 
 	cmd := runss.NewCmd()
 
-	if err := runss.ParseFlag(cmd); err != nil {
+	prompt, err := runss.ParseFlag(cmd)
+
+	if err != nil {
 		panic(err)
 	}
 
-	if err := cmd.Run(); err != nil {
-		panic(err)
-	}
+	if prompt {
+		err := cmd.Prompt(os.Stdout)
 
-	cmd.PrintResults(os.Stdout)
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		err = cmd.Run()
+
+		if err != nil {
+			panic(err)
+		}
+
+		cmd.PrintResults(os.Stdout)
+	}
 }

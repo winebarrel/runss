@@ -6,11 +6,12 @@ import (
 	"strings"
 )
 
-func ParseFlag(cmd *Cmd) (err error) {
+func ParseFlag(cmd *Cmd) (prompt bool, err error) {
 	idList := ""
 
 	flag.StringVar(&cmd.Command, "command", "", "shell script command")
 	flag.StringVar(&idList, "instance-ids", "", "comma separated instance ids")
+	flag.BoolVar(&prompt, "prompt", false, "show prompt")
 	flag.Parse()
 
 	instanceIds := strings.Split(idList, ",")
@@ -23,7 +24,7 @@ func ParseFlag(cmd *Cmd) (err error) {
 		}
 	}
 
-	if cmd.Command == "" {
+	if !prompt && cmd.Command == "" {
 		err = fmt.Errorf("'command' is required")
 		return
 	}

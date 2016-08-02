@@ -11,6 +11,7 @@ go-get:
 	go get github.com/aws/aws-sdk-go
 	go get github.com/golang/mock/gomock
 	go get github.com/stretchr/testify
+	go get gopkg.in/readline.v1
 
 stringer:
 	go get golang.org/x/tools/cmd/stringer

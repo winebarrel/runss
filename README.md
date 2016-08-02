@@ -12,6 +12,8 @@ Usage of runss:
       shell script command
   -instance-ids string
       comma separated instance ids
+  -prompt
+      show prompt
 ```
 
 ```
@@ -24,6 +26,23 @@ $ runss -command hostname -instance-ids i-xxx...,i-yyy...
   Status: Success
   Output: |
     ip-10-10-10-11
+```
+
+### Show prompt
+
+```
+$ runss -instance-ids i-xxx...  -prompt
+> hostname
+- InstanceId: i-xxx...
+  Status: Success
+  Output: |
+    ip-10-10-10-10
+
+> whoami
+- InstanceId: i-xxx...
+  Status: Success
+  Output: |
+    root
 ```
 
 ## Installation
