@@ -31,7 +31,7 @@ $ runss -command hostname -instance-ids i-xxx...,i-yyy...
 ### Show prompt
 
 ```
-$ runss -instance-ids i-xxx...  -prompt
+$ runss -instance-ids i-xxx... -prompt
 > hostname
 - InstanceId: i-xxx...
   Status: Success
