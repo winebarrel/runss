@@ -17,10 +17,7 @@ func main() {
 		}
 	}()
 
-	cmd := &runss.Cmd{
-		InstanceIds: []string{},
-		Results:     map[string]*runss.Result{},
-	}
+	cmd := runss.NewCmd()
 
 	if err := runss.ParseFlag(cmd); err != nil {
 		panic(err)
