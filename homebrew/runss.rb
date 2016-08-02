@@ -1,11 +1,11 @@
 require 'formula'
 
 class Runss < Formula
-  VERSION = '0.1.4'
+  VERSION = '0.1.5'
 
   homepage 'https://github.com/winebarrel/runss'
   url "https://github.com/winebarrel/runss/releases/download/v#{VERSION}/runss-v#{VERSION}-darwin-amd64.gz"
-  sha256 'a168d41feadfd20bff196f10517384c88b8eb050ff94df0289336530ad871054'
+  sha256 '3934981a72ff1dd20be6cd034c3860c9c0fd733ccbdc3ea755ceb08e52724c59'
   version VERSION
   head 'https://github.com/winebarrel/runss.git', :branch => 'master'
 
