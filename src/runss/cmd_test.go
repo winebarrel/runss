@@ -9,6 +9,17 @@ import (
 	"testing"
 )
 
+func TestNewCmd(t *testing.T) {
+	assert := assert.New(t)
+
+	expected := &Cmd{
+		InstanceIds: []string{},
+		Results:     map[string]*Result{},
+	}
+
+	assert.Equal(expected, NewCmd())
+}
+
 func TestSendCommand(t *testing.T) {
 	assert := assert.New(t)
 

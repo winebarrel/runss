@@ -152,6 +152,15 @@ func (cmd *Cmd) waitCommand(svc ssmiface.SSMAPI) (err error) {
 	return
 }
 
+func NewCmd() (cmd *Cmd) {
+	cmd = &Cmd{
+		InstanceIds: []string{},
+		Results:     map[string]*Result{},
+	}
+
+	return
+}
+
 func (cmd *Cmd) Run() (err error) {
 	svc := ssm.New(session.New())
 
