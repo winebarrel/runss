@@ -22,6 +22,7 @@ $ runss -command hostname -instance-ids i-xxx...,i-yyy...
   Status: Success
   Output: |
     ip-10-10-10-10
+
 - InstanceId: i-yyy...
   Status: Success
   Output: |
